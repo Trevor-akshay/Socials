@@ -17,10 +17,10 @@ const RightMenu = ({ user }: { user?: User }) => {
           <Suspense fallback="loading..">
             <UserMedia user={user} />
           </Suspense>
+          <Birthdays />
         </>
       ) : null}
       <FriendRequest />
-      <Birthdays />
       <Ad />
     </div>
   );

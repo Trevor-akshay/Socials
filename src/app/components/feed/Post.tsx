@@ -4,7 +4,6 @@ import PostInteraction from "./PostInteraction";
 import Comments from "./Comments";
 import { Suspense } from "react";
 import PostEdits from "./postEdits";
-import { useAuth } from "@clerk/nextjs";
 
 type FeedPostType = PostType & {
   user: User;

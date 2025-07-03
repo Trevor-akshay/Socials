@@ -12,8 +12,8 @@ const NavBar = () => {
   return (
     <div className="h-24 flex items-center justify-between">
       <div className="md:hidden lg:block w-[20%]">
-        <Link href="/" className="text-red-600 text-xl font-bold">
-          Socials
+        <Link href="/" className="w-8 h-8">
+          <Image src="/socials.png" alt="logo" height={48} width={48} className="w-12 h-12"/>
         </Link>
       </div>
       <div className="hidden md:flex w-[50%] text-small items-center justify-between">

@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import Post from "./Post";
 import { prisma } from "@/app/lib/prismaClient";
-import { tr } from "zod/v4/locales";
+import { feedPosts } from "@/app/lib/constants";
 
 const Feed = async ({ username }: { username?: string }) => {
   const { userId } = await auth();
@@ -70,11 +70,17 @@ const Feed = async ({ username }: { username?: string }) => {
 
   return (
     <div className="p-4 bg-white shadow-md rounded-lg flex flex-col gap-20">
-      {posts.length > 0 ? (
-        posts.map((post) => <Post key={post.id} post={post} userId={userId} />)
-      ) : (
-        <div>No Posts founds</div>
-      )}
+      {posts.length > 0
+        ? posts.map((post) => (
+            <Post key={post.id} post={post} userId={userId} />
+          ))
+        : feedPosts.map((post) => (
+            <Post
+              key={post.id}
+              post={post}
+              userId={userId}
+            />
+          ))}
     </div>
   );
 };
