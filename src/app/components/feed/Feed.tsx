@@ -77,6 +77,7 @@ const Feed = async ({ username }: { username?: string }) => {
         : feedPosts.map((post) => (
             <Post
               key={post.id}
+              //@ts-ignore
               post={post}
               userId={userId}
             />
