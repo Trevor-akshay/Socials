@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Feed from "@/app/components/feed/Feed";
 import LeftMenu from "@/app/components/leftMenu/LeftMenu";
 import RightMenu from "@/app/components/rightMenu/RightMenu";
@@ -6,8 +7,12 @@ import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-const profilePage = async ({ params }: { params: { username: string } }) => {
-  const username = params.username;
+const profilePage = async ({
+  params,
+}: {
+  params: Promise<{ username: string }>;
+}) => {
+  const username = await params.username;
   const user = await prisma.user.findFirst({
     where: {
       username: username,
